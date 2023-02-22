@@ -1,9 +1,7 @@
-/output
 /transformers
 /v4env
 /vision
 /pytorch
 /__pycache__
-/tmp.zip
 /.env
-/train.txt
+/output/pytorch_model.bin
