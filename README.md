@@ -2,7 +2,8 @@
 
 ## モラズbot とは
 福岡の妙齢の女モラズ [@morazumorazu](https://twitter.com/morazumorazu) こと、年齢性別不詳の謎のツイッタラー・モラズのbot のことです。
-詳細：
+
+詳細参考：
 - [モラズbot V4 製作の途中経過](https://note.com/arkb/n/n803ad5d54293)
 
 ## 環境
@@ -18,7 +19,7 @@ Codename:	bullseye
 
 ## モラズbot V4 のインストール
 
-ラズパイにログインして下記コマンドでインストールします。
+ラズパイに pi にてログインし下記コマンドでインストールします。
 
 ```
 mkdir -p /home/pi/work && cd /home/pi/work
