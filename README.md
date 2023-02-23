@@ -54,7 +54,7 @@ bash /home/pi/work/morazubot_v4/tweet.sh
 
 ```
 source /home/pi/work/morazubot_v4/v4env/bin/activate
-bash reply.sh
+bash /home/pi/work/morazubot_v4/reply.sh
 ```
 
 実行例：
