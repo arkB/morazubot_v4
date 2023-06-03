@@ -28,14 +28,15 @@ cd morazubot_v4
 bash install.sh
 ```
 
-.env ファイルを作成し、下記 bot の TwitterID とアクセストークン等を入力します。
+morazu2_bot.ini ファイルを作成し、下記 bot の ID およびアクセストークン等を5つ入力します。
 
 ```
-BOT_SCREEN_NAME = ''
-ACCESS_TOKEN_KEY = ''
-ACCESS_TOKEN_SECRET = ''
-CONSUMER_KEY = ''
-CONSUMER_SECRET = ''
+[morazu2_bot]
+consumer_key = 
+consumer_secret = 
+access_key = 
+access_secret = 
+bearer_token = 
 ```
 
 ## モラズbot V4 使い方
@@ -49,13 +50,3 @@ bash /home/pi/work/morazubot_v4/tweet.sh
 
 実行例：
 ![](images/tweet.PNG)
-
-モラズBotのフォロワーからのリプに返事をする場合は下記コマンドで実行します。
-
-```
-source /home/pi/work/morazubot_v4/v4env/bin/activate
-bash /home/pi/work/morazubot_v4/reply.sh
-```
-
-実行例：
-![](images/reply.PNG)
