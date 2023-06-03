@@ -5,3 +5,4 @@
 /__pycache__
 /.env
 /output/pytorch_model.bin
+morazu2_bot.ini

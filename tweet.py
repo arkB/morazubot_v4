@@ -1,6 +1,21 @@
-import config
 from transformers import T5Tokenizer, AutoModelForCausalLM
-import twitter
+import tweepy
+import configparser
+
+def auth_api_v2(envName):
+    config = configparser.ConfigParser(interpolation=None)
+    config.read('morazu2_bot.ini')
+    consumer_key = config.get(envName, 'consumer_key')
+    consumer_secret = config.get(envName, 'consumer_secret')
+    access_key = config.get(envName, 'access_key')
+    access_secret = config.get(envName, 'access_secret')
+    bearer_token = config.get(envName, 'bearer_token')
+    client = tweepy.Client(bearer_token=bearer_token,
+                           consumer_key=consumer_key,
+                           consumer_secret=consumer_secret,
+                           access_token=access_key,
+                           access_token_secret=access_secret)
+    return client
 
 if __name__ == '__main__':
   # Preparation of tokenizers and model
@@ -14,19 +29,11 @@ if __name__ == '__main__':
   decoded = tokenizer.batch_decode(output, skip_special_tokens=True)
 
   # Twitter OAuth
-  ACCESS_TOKEN_KEY = config.ACCESS_TOKEN_KEY
-  ACCESS_TOKEN_SECRET = config.ACCESS_TOKEN_SECRET
-  CONSUMER_KEY = config.CONSUMER_KEY
-  CONSUMER_SECRET = config.CONSUMER_SECRET
-  oauth = twitter.OAuth(ACCESS_TOKEN_KEY,
-                        ACCESS_TOKEN_SECRET,
-                        CONSUMER_KEY,
-                        CONSUMER_SECRET)
-  tweet = twitter.Twitter(auth=oauth)
-  tweet_text = decoded[0][3:]
+  client = auth_api_v2('morazu2_bot')
+  tweet_text = decoded[0][3:].replace("!", "！").replace("?", "？").replace("(","（").replace(")", "）")
 
   # Tweet
   if len(tweet_text) < 140:
-      tweet.statuses.update(status=tweet_text)
+      client.create_tweet(text=tweet_text)
   else:
-      tweet.statuses.update(status=tweet_text[:138]+"字数")
+      client.create_tweet(text=tweet_text[:138]+"字数")
